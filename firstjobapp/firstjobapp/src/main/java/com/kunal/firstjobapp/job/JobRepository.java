@@ -1,2 +1,9 @@
-package com.kunal.firstjobapp.job;public interface JobRepository {
+package com.kunal.firstjobapp.job;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JobRepository extends JpaRepository<Job,Long> {
+
+
+
 }
