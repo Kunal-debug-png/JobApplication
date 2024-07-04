@@ -12,28 +12,28 @@ public class ReviewController {
 
 
     @GetMapping("/{companyId}/reviews")
-    public List<String> reviews() {
-        return null;
+    public List<Review> reviews(@PathVariable Long companyId) {
+        return reviewService.reviews(companyId);
     }
 
     //2
     @PostMapping("/{companyId}/reviews")
-    public void addReview(@PathVariable Long companyId){
-
+    public void addReview(@PathVariable Long companyId,@RequestBody Review review){
+        reviewService.addReview(companyId,review);
     }
     //3
     @GetMapping("/{companyId}/reviews/{reviewId}")
-    public String getReview(@PathVariable Long companyId,@PathVariable Long reviewId){
-        return null;
+    public Review getReview(@PathVariable Long companyId, @PathVariable Long reviewId){
+        return reviewService.getReviewById(companyId,reviewId);
     }
     //4
     @PutMapping("/{companyId}/reviews/{reviewId}")
-    public String updateReview(@PathVariable Long companyId,@PathVariable Long reviewId){
-        return null;
+    public String updateReview(@RequestBody Review review,@PathVariable Long companyId,@PathVariable Long reviewId){
+        return reviewService.updateReview(review,companyId,reviewId);
     }
 
     @DeleteMapping("/{companyId}/reviews/{reviewId}")
-    public String reviewById(){
-        return null;
+    public void deleteReviewById(@PathVariable Long companyId,@PathVariable Long reviewId){
+        reviewService.deleteReview(companyId,reviewId);
     }
 }
